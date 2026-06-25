@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>EscalaMaker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<div id="edit-modal" class="modal hidden">
+    <div class="modal-content">
+
+        <h2>Editar atendente</h2>
+
+        <label>Nome: </label>
+        <input type="text" id="edit-name">
+
+        <label>Empresas: </label>
+        <div id="edit-list-container"></div>
+
+            <button type="button" id="add-item-btn">
+                + Adicionar empresa
+            </button>
+
+        <div class="modal-buttons">
+            <button id="save-btn">Salvar</button>
+            <button id="cancel-btn">Cancelar</button>
+        </div>
+
+    </div>
+</div>
+
+<body>
+
+<div id="top-bar">
+
+    <div id="header-note-container">
+        <input
+            type="text"
+            id="header-note"
+            placeholder=""
+        >
+    </div>
+
+    <button id="reset-btn">
+        RESET
+    </button>
+
+</div>
+
+<div id="users-container">
+
+    <div class="user">
+        <div class="profile-card">
+            <img src="fotos/default.png">
+            <p>Default user</p>
+
+            <div class="button-group">
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Del</button>
+            </div>
+        </div>
+
+        <div class="list-box"></div>
+    </div>
+
+    <button id="add-user-btn">+</button>
+
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
