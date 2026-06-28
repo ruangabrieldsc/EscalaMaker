@@ -34,7 +34,9 @@ const fotosEspeciais = {
     "emerson": "fotos/emerson.png",
     "joao": "fotos/joao.png",
     "pedro henrique": "fotos/pedro henrique.png",
-    "evelyn": "fotos/evelyn.png"
+    "evelyn": "fotos/evelyn.png",
+    "keren": "fotos/keren.png",
+    "maria petriaggi": "fotos/maria petriaggi.png"
 };
 
 function obterFoto(nome) {
