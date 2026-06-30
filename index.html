@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+
 <div id="edit-modal" class="modal hidden">
     <div class="modal-content">
 
@@ -42,9 +43,41 @@
         >
     </div>
 
-    <button id="reset-btn">
-        RESET
-    </button>
+    <div id="top-buttons">
+
+        <div id="preset-container">
+
+            <button id="preset-btn">
+                Presets ▼
+            </button>
+
+            <div id="preset-menu" class="hidden">
+
+                <button class="preset-option" data-preset="1">
+                    Folga Ruan
+                </button>
+
+                <button class="preset-option" data-preset="2">
+                    Folga Ana
+                </button>
+
+                <button class="preset-option" data-preset="3">
+                    Folga Mônica
+                </button>
+
+                <button class="preset-option" data-preset="4">
+                    Todos
+                </button>
+
+            </div>
+
+        </div>
+
+        <button id="reset-btn">
+            RESET
+        </button>
+
+    </div>
 
 </div>
 

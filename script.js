@@ -9,6 +9,209 @@ function normalizarNome(nome) {
         
 }
 
+const presets = {
+
+    1: {
+        nome: "Folga Ruan",
+
+        observacao: "Folga Ruan",
+
+        users: [
+            {
+                nome: "Daiane",
+                escala: [
+                    "Nexnett",
+                    "Ceraça",
+                    "Netup",
+                    "Conexão Mais",
+                    "Sim Digital",
+                    "TCF",
+                    "Fibinet",
+                    "Nitro abre 17h30"
+                ]
+            },
+            {
+                nome: "Ana Paula",
+                escala: [
+                    "Ceraça",
+                    "Click",
+                    "Connect Master",
+                    "Vilanet",
+                    "Space",
+                    "Sim Digital",
+                    "Nexnett",
+                    "Tenet abre 17h30"
+                ]
+            },
+            {
+                nome: "Mônica",
+                escala: [
+                    "PG ON",
+                    "Worksat",
+                    "Connect Master",
+                    "Fibinet",
+                    "Impacta",
+                    "Sim Digital",
+                    "Rede Telecom",
+                    "Gospel abre 17h40"
+                ]
+            }
+        ]
+    },
+
+    2: {
+        nome: "Folga Ana",
+
+        observacao: "Folga Ana",
+
+        users: [
+            {
+                nome: "Daiane",
+                escala: [
+                    "Nexnett",
+                    "Ceraça",
+                    "Netup",
+                    "Vilanet",
+                    "Sim Digital",
+                    "TCF",
+                    "Gospel abre 17h40"
+                ]
+            },
+            {
+                nome: "Mônica",
+                escala: [
+                    "PG ON",
+                    "Worksat",
+                    "Connect Master",
+                    "Fibinet",
+                    "Impacta",
+                    "Sim Digital",
+                    "Space",
+                    "Tenet abre 17h30"
+                ]
+            },
+            {
+                nome: "Ruan",
+                escala: [
+                    "Ceraça",
+                    "Click",
+                    "Conexão Mais",
+                    "Sim Digital",
+                    "Rede Telecom",
+                    "Nexnett",
+                    "Fibinet",
+                    "Nitro abre 17h30"
+                ]
+            }
+        ]
+    },
+
+    3: {
+        nome: "Folga Mônica",
+
+        observacao: "Folga Mônica",
+
+        users: [
+            {
+                nome: "Daiane",
+                escala: [
+                    "Nexnett",
+                    "Conexão Mais",
+                    "Netup",
+                    "Worksat",
+                    "Sim Digital",
+                    "TCF",
+                    "Nitro abre 17h30",
+                    "Tenet abre 17h30"
+                ]
+            },
+            {
+                nome: "Ana Paula",
+                escala: [
+                    "Space",
+                    "Ceraça",
+                    "Vilanet",
+                    "Fibinet",
+                    "Click",
+                    "Sim Digital",
+                    "Connect Master",
+                    "Gospel abre 17h40"
+                ]
+            },
+            {
+                nome: "Ruan",
+                escala: [
+                    "Ceraça",
+                    "PG ON",
+                    "Conexão Mais",
+                    "Sim Digital",
+                    "Rede Telecom",
+                    "Connect Master",
+                    "Impacta",
+                    "Nitro abre 17h30"
+                ]
+            }
+        ]
+    },
+
+    4: {
+        nome: "Todos",
+
+        observacao: "Todos",
+
+        users: [
+            {
+                nome: "Daiane",
+                escala: [
+                    "Fibinet",
+                    "Conexão Mais",
+                    "Netup",
+                    "Sim Digital",
+                    "Nitro abre 17h30",
+                    "Tenet abre 17h30"
+                ]
+            },
+            {
+                nome: "Ana Paula",
+                escala: [
+                    "Space",
+                    "Ceraça",
+                    "Vilanet",
+                    "Nexnett",
+                    "Sim Digital",
+                    "TCF",
+                    "Gospel abre 17h40"
+                ]
+            },
+            {
+                nome: "Ruan",
+                escala: [
+                    "Ceraça",
+                    "Nexnett",
+                    "Conexão Mais",
+                    "Sim Digital",
+                    "Rede Telecom",
+                    "Connect Master",
+                    "Click",
+                    "Nitro abre 17h30"
+                ]
+            },
+            {
+                nome: "Mônica",
+                escala: [
+                    "PG ON",
+                    "Worksat",
+                    "Fibinet",
+                    "Sim Digital",
+                    "Connect Master",
+                    "Impacta"
+                ]
+            }
+        ]
+    }
+
+};
+
 const coresEmpresas = [
     "rgba(255, 182, 193, 0.25)", // rosa
     "rgba(173, 216, 230, 0.25)", // azul
@@ -55,11 +258,10 @@ function gerarMapaDeCores() {
     const contador = {};
 
     users.forEach(user => {
-        user.escala.forEach(item => {
-            contador[item] = (contador[item] || 0) + 1;
-        });
+    (user.escala || []).forEach(item => {
+        contador[item] = (contador[item] || 0) + 1;
     });
-
+});
     const empresasDuplicadas =
         Object.keys(contador)
             .filter(item => contador[item] >= 2);
@@ -141,7 +343,7 @@ function renderUsers() {
 
             listContainer.innerHTML = "";
 
-            user.escala.forEach(item => {
+            (user.escala || []).forEach(item => {
 
                 const row = document.createElement("div");
                     row.className = "list-item-row";
@@ -190,7 +392,7 @@ function renderUsers() {
                 renderUsers();
         };
 
-        user.escala.forEach(item => {
+        (user.escala || []).forEach(item => {
 
             const row = document.createElement("div");
 
@@ -323,6 +525,54 @@ headerNote.addEventListener("input", () => {
     } else {
         headerNote.classList.add("filled");
     }
+});
+
+const presetBtn =
+    document.getElementById("preset-btn");
+
+const presetMenu =
+    document.getElementById("preset-menu");
+
+presetBtn.onclick = () => {
+
+    presetMenu.classList.toggle("hidden");
+
+};
+
+document.querySelectorAll(".preset-option")
+.forEach(botao => {
+
+    botao.onclick = () => {
+
+        const id = botao.dataset.preset;
+
+        users.length = 0;
+
+        presets[id].users.forEach(user => {
+
+            users.push(
+                structuredClone(user)
+            );
+
+        });
+
+        headerNote.value =
+            presets[id].observacao;
+
+        headerNote.classList.add("filled");
+
+        localStorage.setItem(
+            "headerNote",
+            presets[id].observacao
+        );
+
+        salvarDados();
+
+        renderUsers();
+
+        presetMenu.classList.add("hidden");
+    };
+
 });
 
 
