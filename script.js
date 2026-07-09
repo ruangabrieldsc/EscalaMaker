@@ -166,7 +166,6 @@ const presets = {
                     "Conexão Mais",
                     "Netup",
                     "Sim Digital",
-                    "Nitro abre 17h30",
                     "Tenet abre 17h30"
                 ]
             },
