@@ -116,12 +116,11 @@ const presets = {
                 nome: "Daiane",
                 escala: [
                     "Nexnett",
-                    "Conexão Mais",
                     "Netup",
                     "Worksat",
                     "Sim Digital",
                     "TCF",
-                    "Nitro abre 17h30",
+                    "Fibinet",
                     "Tenet abre 17h30"
                 ]
             },
@@ -190,7 +189,6 @@ const presets = {
                     "Nexnett",
                     "Conexão Mais",
                     "Sim Digital",
-                    "Rede Telecom",
                     "Connect Master",
                     "Click",
                     "Nitro abre 17h30"
@@ -204,7 +202,9 @@ const presets = {
                     "Fibinet",
                     "Sim Digital",
                     "Connect Master",
-                    "Impacta"
+                    "Impacta",
+                    "Rede Telecom"
+
                 ]
             }
         ]
