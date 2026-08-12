@@ -230,6 +230,8 @@ const fotosEspeciais = {
     "ana paula": "fotos/ana paula.png",
     "rey delas": "fotos/rey delas.gif",
     "reynaldo": "fotos/reynaldo.png",
+    "david": "fotos/david.png",
+    "anna luiza": "fotos/anna luiza.png",
     "gabrieli": "fotos/gabrieli.png",
     "pedro lucas": "fotos/pedro lucas.png",
     "emerson": "fotos/emerson.png",
@@ -239,6 +241,7 @@ const fotosEspeciais = {
     "pedro henrique": "fotos/pedro henrique.png",
     "evelyn": "fotos/evelyn.png",
     "keren": "fotos/keren.png",
+    "edinho": "fotos/edinho.png",
     "maria petriaggi": "fotos/maria petriaggi.png"
 };
 
