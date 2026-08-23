@@ -12,35 +12,21 @@ function normalizarNome(nome) {
 const presets = {
 
     1: {
-        nome: "Folga Ruan",
+        nome: "Folga Ruan e Daiane",
 
-        observacao: "Folga Ruan",
+        observacao: "FOLGA RUAN E DAIANE",
 
         users: [
-            {
-                nome: "Daiane",
-                escala: [
-                    "Nexnett",
-                    "Ceraça",
-                    "Netup",
-                    "Conexão Mais",
-                    "Sim Digital",
-                    "TCF",
-                    "Fibinet",
-                    "Nitro abre 17h30"
-                ]
-            },
             {
                 nome: "Ana Paula",
                 escala: [
                     "Ceraça",
-                    "Click",
-                    "Connect Master",
+                    "Connect",
                     "Vilanet",
                     "Space",
                     "Sim Digital",
-                    "Nexnett",
-                    "Tenet abre 17h30"
+                    "Telmig 17H",
+                    "Tenet 17H30"
                 ]
             },
             {
@@ -48,33 +34,54 @@ const presets = {
                 escala: [
                     "PG ON",
                     "Worksat",
-                    "Connect Master",
+                    "Connect",
                     "Fibinet",
                     "Impacta",
                     "Sim Digital",
-                    "Rede Telecom",
-                    "Gospel abre 17h40"
+                    "Rede Telecom"
+                ]
+            },
+            {
+                nome: "Pedro Henrique",
+                escala: [
+                    "Ceraça",
+                    "Netup",
+                    "Conexão Mais",
+                    "Sim Digital",
+                    "TCF",
+                    "Fibinet",
+                    "Nyo"
                 ]
             }
         ]
     },
 
     2: {
-        nome: "Folga Ana",
+        nome: "Folga Ana Paula",
 
-        observacao: "Folga Ana",
+        observacao: "FOLGA ANA PAULA :D",
 
         users: [
             {
+                nome: "Ruan",
+                escala: [
+                    "Ceraça",
+                    "Conexão Mais",
+                    "Sim Digital",
+                    "Rede Telecom",
+                    "Fibinet",
+                    "Nyo",
+                    "Telmig abre 17H"
+                ]
+            },
+            {
                 nome: "Daiane",
                 escala: [
-                    "Nexnett",
                     "Ceraça",
                     "Netup",
                     "Vilanet",
                     "Sim Digital",
-                    "TCF",
-                    "Gospel abre 17h40"
+                    "TCF"
                 ]
             },
             {
@@ -82,25 +89,12 @@ const presets = {
                 escala: [
                     "PG ON",
                     "Worksat",
-                    "Connect Master",
+                    "Connect",
                     "Fibinet",
                     "Impacta",
                     "Sim Digital",
                     "Space",
-                    "Tenet abre 17h30"
-                ]
-            },
-            {
-                nome: "Ruan",
-                escala: [
-                    "Ceraça",
-                    "Click",
-                    "Conexão Mais",
-                    "Sim Digital",
-                    "Rede Telecom",
-                    "Nexnett",
-                    "Fibinet",
-                    "Nitro abre 17h30"
+                    "Tenet abre 17H"
                 ]
             }
         ]
@@ -109,34 +103,9 @@ const presets = {
     3: {
         nome: "Folga Mônica",
 
-        observacao: "Folga Mônica",
+        observacao: "FOLGA MÔNICA",
 
         users: [
-            {
-                nome: "Daiane",
-                escala: [
-                    "Nexnett",
-                    "Netup",
-                    "Worksat",
-                    "Sim Digital",
-                    "TCF",
-                    "Fibinet",
-                    "Tenet abre 17h30"
-                ]
-            },
-            {
-                nome: "Ana Paula",
-                escala: [
-                    "Space",
-                    "Ceraça",
-                    "Vilanet",
-                    "Fibinet",
-                    "Click",
-                    "Sim Digital",
-                    "Connect Master",
-                    "Gospel abre 17h40"
-                ]
-            },
             {
                 nome: "Ruan",
                 escala: [
@@ -145,28 +114,9 @@ const presets = {
                     "Conexão Mais",
                     "Sim Digital",
                     "Rede Telecom",
-                    "Connect Master",
+                    "Worksat",
                     "Impacta",
-                    "Nitro abre 17h30"
-                ]
-            }
-        ]
-    },
-
-    4: {
-        nome: "Todos",
-
-        observacao: "Todos",
-
-        users: [
-            {
-                nome: "Daiane",
-                escala: [
-                    "Fibinet",
-                    "Click",
-                    "Netup",
-                    "Sim Digital",
-                    "Tenet abre 17h30"
+                    "Nyo"
                 ]
             },
             {
@@ -175,22 +125,49 @@ const presets = {
                     "Space",
                     "Ceraça",
                     "Vilanet",
-                    "Nexnett",
+                    "Fibinet",
                     "Sim Digital",
-                    "TCF",
-                    "Gospel abre 17h40"
+                    "Connect Master",
+                    "Telmig abre 17H",
+                    "Tenet abre 17H30"
+                ]
+            },
+            {
+                nome: "Daiane",
+                escala: [
+                    "Fibinet",
+                    "Sim Digital",
+                    "Netup",
+                    "TCF"
+                ]
+            }
+        ]
+    },
+
+    4: {
+        nome: "Todos",
+
+        observacao: "TODOS",
+
+        users: [
+            {
+                nome: "Daiane",
+                escala: [
+                    "Fibinet",
+                    "Netup",
+                    "Sim Digital",
+                    "TCF"
                 ]
             },
             {
                 nome: "Ruan",
                 escala: [
                     "Ceraça",
-                    "Nexnett",
                     "Conexão Mais",
                     "Sim Digital",
-                    "Connect Master",
                     "Rede Telecom",
-                    "Nitro abre 17h30"
+                    "Nyo",
+                    "Tenet abre 17H30"
                 ]
             },
             {
@@ -202,7 +179,17 @@ const presets = {
                     "Sim Digital",
                     "Connect Master",
                     "Impacta"
-
+                ]
+            },
+            {
+                nome: "Ana Paula",
+                escala: [
+                    "Space",
+                    "Ceraça",
+                    "Vilanet",
+                    "Sim Digital",
+                    "Connect Master",
+                    "Telmig abre 17H"
                 ]
             }
         ]
