@@ -218,7 +218,7 @@ const fotosEspeciais = {
 
     //NOITE
 
-    "rodrigo": "fotos/rodrigo.gif",
+    "rodrigo": "fotos/rodrigo.png",
     "rey delas": "fotos/rey delas.gif",
     "reynaldo": "fotos/reynaldo.png",
     "david": "fotos/david.png",
