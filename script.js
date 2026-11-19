@@ -215,6 +215,10 @@ const fotosEspeciais = {
     "daiane": "fotos/daiane.png",
     "monica": "fotos/monica.png",
     "ana paula": "fotos/ana paula.png",
+
+    //NOITE
+
+    "rodrigo": "fotos/rodrigo.gif",
     "rey delas": "fotos/rey delas.gif",
     "reynaldo": "fotos/reynaldo.png",
     "david": "fotos/david.png",
@@ -229,7 +233,14 @@ const fotosEspeciais = {
     "evelyn": "fotos/evelyn.png",
     "keren": "fotos/keren.png",
     "edinho": "fotos/edinho.png",
-    "maria petriaggi": "fotos/maria petriaggi.png"
+    "maria petriaggi": "fotos/maria petriaggi.png",
+
+    //MANHÃ
+
+    "pedro carneiro": "fotos/pedro carneiro.png",
+    "luciano": "fotos/luciano.png",
+    "eduarda": "fotos/eduarda.png",
+    "gean": "fotos/gean.png"
 };
 
 function obterFoto(nome) {
