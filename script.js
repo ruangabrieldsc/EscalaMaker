@@ -234,6 +234,7 @@ const fotosEspeciais = {
     "keren": "fotos/keren.png",
     "ederson": "fotos/edinho.png",
     "maria petriaggi": "fotos/maria petriaggi.png",
+    "kallyl": "fotos/kallyl.png",
 
     //MANHÃ
 
