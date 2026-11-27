@@ -75,11 +75,42 @@ body {
     border-bottom: none;
 }
 
+
 .button-group {
     display: flex;
     justify-content: center;
     gap: 10px;
+    margin-top: 0;
+
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+
+    transition:
+        max-height 0.25s ease,
+        opacity 0.25s ease,
+        margin-top 0.25s ease,
+        visibility 0.25s ease;
+}
+
+/* Expande a área dos botões ao passar o mouse */
+.profile-card:hover .button-group,
+.profile-card:focus-within .button-group {
+    max-height: 50px;
     margin-top: 15px;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Em dispositivos com tela touch, mantém os botões visíveis */
+@media (hover: none) {
+    .button-group {
+        max-height: 50px;
+        margin-top: 15px;
+        opacity: 1;
+        visibility: visible;
+    }
 }
 
 .button-group button {
@@ -376,11 +407,11 @@ body {
     transform: translateY(-2px);
 }
 
-#preset-container{
+#pages-container{
     position:relative;
 }
 
-#preset-btn{
+#pages-btn{
 
     border:none;
 
@@ -401,11 +432,11 @@ body {
     transition:.2s;
 }
 
-#preset-btn:hover{
+#pages-btn:hover{
     transform:translateY(-2px);
 }
 
-#preset-menu{
+#pages-menu{
 
     position:absolute;
 
@@ -427,7 +458,7 @@ body {
     z-index:999;
 }
 
-.preset-option{
+.page-option{
 
     width:100%;
 
@@ -444,7 +475,7 @@ body {
     cursor:pointer;
 }
 
-.preset-option:hover{
+.page-option:hover{
 
     background:#f3efff;
 }

@@ -1,4 +1,10 @@
 let currentUser = null;
+let users = [];
+let currentPage = 1;
+let pagesData = {};
+const headerNote = document.getElementById("header-note");
+
+const CHAVE_PAGINAS = "escalaMakerPages";
 
 function normalizarNome(nome) {
     return nome
@@ -8,194 +14,6 @@ function normalizarNome(nome) {
 
         
 }
-
-const presets = {
-
-    1: {
-        nome: "Folga Ruan e Daiane",
-
-        observacao: "FOLGA RUAN E DAIANE",
-
-        users: [
-            {
-                nome: "Ana Paula",
-                escala: [
-                    "Ceraça",
-                    "Connect",
-                    "Vilanet",
-                    "Space",
-                    "Sim Digital",
-                    "Telmig 17H",
-                    "Tenet 17H30"
-                ]
-            },
-            {
-                nome: "Mônica",
-                escala: [
-                    "PG ON",
-                    "Worksat",
-                    "Connect",
-                    "Fibinet",
-                    "Impacta",
-                    "Sim Digital",
-                    "Rede Telecom"
-                ]
-            },
-            {
-                nome: "Pedro Henrique",
-                escala: [
-                    "Ceraça",
-                    "Netup",
-                    "Conexão Mais",
-                    "Sim Digital",
-                    "TCF",
-                    "Fibinet",
-                    "Nyo"
-                ]
-            }
-        ]
-    },
-
-    2: {
-        nome: "Folga Ana Paula",
-
-        observacao: "FOLGA ANA PAULA :D",
-
-        users: [
-            {
-                nome: "Ruan",
-                escala: [
-                    "Ceraça",
-                    "Conexão Mais",
-                    "Sim Digital",
-                    "Rede Telecom",
-                    "Fibinet",
-                    "Nyo",
-                    "Telmig abre 17H"
-                ]
-            },
-            {
-                nome: "Daiane",
-                escala: [
-                    "Ceraça",
-                    "Netup",
-                    "Vilanet",
-                    "Sim Digital",
-                    "TCF"
-                ]
-            },
-            {
-                nome: "Mônica",
-                escala: [
-                    "PG ON",
-                    "Worksat",
-                    "Connect",
-                    "Fibinet",
-                    "Impacta",
-                    "Sim Digital",
-                    "Space",
-                    "Tenet abre 17H"
-                ]
-            }
-        ]
-    },
-
-    3: {
-        nome: "Folga Mônica",
-
-        observacao: "FOLGA MÔNICA",
-
-        users: [
-            {
-                nome: "Ruan",
-                escala: [
-                    "Ceraça",
-                    "PG ON",
-                    "Conexão Mais",
-                    "Sim Digital",
-                    "Rede Telecom",
-                    "Worksat",
-                    "Impacta",
-                    "Nyo"
-                ]
-            },
-            {
-                nome: "Ana Paula",
-                escala: [
-                    "Space",
-                    "Ceraça",
-                    "Vilanet",
-                    "Fibinet",
-                    "Sim Digital",
-                    "Connect Master",
-                    "Telmig abre 17H",
-                    "Tenet abre 17H30"
-                ]
-            },
-            {
-                nome: "Daiane",
-                escala: [
-                    "Fibinet",
-                    "Sim Digital",
-                    "Netup",
-                    "TCF"
-                ]
-            }
-        ]
-    },
-
-    4: {
-        nome: "Todos",
-
-        observacao: "TODOS",
-
-        users: [
-            {
-                nome: "Daiane",
-                escala: [
-                    "Fibinet",
-                    "Netup",
-                    "Sim Digital",
-                    "TCF"
-                ]
-            },
-            {
-                nome: "Ruan",
-                escala: [
-                    "Ceraça",
-                    "Conexão Mais",
-                    "Sim Digital",
-                    "Rede Telecom",
-                    "Nyo",
-                    "Tenet abre 17H30"
-                ]
-            },
-            {
-                nome: "Mônica",
-                escala: [
-                    "PG ON",
-                    "Worksat",
-                    "Fibinet",
-                    "Sim Digital",
-                    "Connect Master",
-                    "Impacta"
-                ]
-            },
-            {
-                nome: "Ana Paula",
-                escala: [
-                    "Space",
-                    "Ceraça",
-                    "Vilanet",
-                    "Sim Digital",
-                    "Connect Master",
-                    "Telmig abre 17H"
-                ]
-            }
-        ]
-    }
-
-};
 
 const coresEmpresas = [
     "rgba(255, 182, 193, 0.25)", // rosa
@@ -227,6 +45,7 @@ const fotosEspeciais = {
     "pedro lucas": "fotos/pedro lucas.png",
     "emerson": "fotos/emerson.png",
     "joao": "fotos/joao.png",
+    "joao gabriel": "fotos/joao.png",
     "jenifer": "fotos/jenifer.png",
     "djessica": "fotos/djessica.png",
     "pedro henrique": "fotos/pedro henrique.png",
@@ -250,9 +69,12 @@ function obterFoto(nome) {
 }
 
 function resetarTudo() {
-
-    localStorage.clear();
-    location.reload();
+    // O reset afeta somente a página aberta; as outras permanecem intactas.
+    users = [];
+    headerNote.value = "";
+    headerNote.classList.remove("filled");
+    salvarDados();
+    renderUsers();
 }
 
 function gerarMapaDeCores() {
@@ -283,22 +105,62 @@ function gerarMapaDeCores() {
 
 
 function salvarDados() {
-    localStorage.setItem(
-        "users",
-        JSON.stringify(users)
-    );
+    pagesData[currentPage] = {
+        users: users,
+        observacao: headerNote.value
+    };
+
+    localStorage.setItem(CHAVE_PAGINAS, JSON.stringify(pagesData));
 }
 
+function inicializarPaginas() {
+    const dadosSalvos = localStorage.getItem(CHAVE_PAGINAS);
 
-const users =
-    JSON.parse(localStorage.getItem("users"))
-    || [ {
-        nome: "Atendente", 
-        foto: "fotos/default.png", 
-        escala: ["EMPRESA"]
+    if (dadosSalvos) {
+        try {
+            pagesData = JSON.parse(dadosSalvos) || {};
+        } catch (erro) {
+            pagesData = {};
+        }
     }
 
-    ];
+    // Migra os dados antigos para a Página 1, sem perder a escala existente.
+    if (!pagesData[1]) {
+        pagesData[1] = {
+            users: JSON.parse(localStorage.getItem("users")) || [
+                { nome: "Atendente", foto: "fotos/default.png", escala: ["EMPRESA"] }
+            ],
+            observacao: localStorage.getItem("headerNote") || ""
+        };
+    }
+
+    // As páginas 2 e 3 são criadas vazias na primeira utilização.
+    [2, 3].forEach(numero => {
+        if (!pagesData[numero]) {
+            pagesData[numero] = { users: [], observacao: "" };
+        }
+    });
+
+    localStorage.setItem(CHAVE_PAGINAS, JSON.stringify(pagesData));
+    carregarPagina(1);
+}
+
+function carregarPagina(numero) {
+    currentPage = numero;
+    const dados = pagesData[numero] || { users: [], observacao: "" };
+
+    users = dados.users || [];
+    headerNote.value = dados.observacao || "";
+    headerNote.classList.toggle("filled", headerNote.value.trim() !== "");
+
+    renderUsers();
+    atualizarBotaoPagina();
+}
+
+function atualizarBotaoPagina() {
+    const pagesBtn = document.getElementById("pages-btn");
+    if (pagesBtn) pagesBtn.textContent = `Pages · ${currentPage} ▼`;
+}
 
 function renderUsers() {
 
@@ -432,7 +294,7 @@ function renderUsers() {
     container.appendChild(addButton);
 }
 
-renderUsers();
+inicializarPaginas();
 
 document.getElementById("save-btn").onclick = () => {
 
@@ -502,79 +364,27 @@ document.getElementById("reset-btn").onclick = () => {
     resetarTudo();
 };
 
-const headerNote =
-    document.getElementById("header-note");
+const pagesBtn = document.getElementById("pages-btn");
+const pagesMenu = document.getElementById("pages-menu");
 
-const savedNote =
-    localStorage.getItem("headerNote");
+pagesBtn.onclick = () => {
+    pagesMenu.classList.toggle("hidden");
+};
 
-if (savedNote) {
-
-    headerNote.value = savedNote;
-
-    headerNote.classList.add("filled");
-}
+document.querySelectorAll(".page-option").forEach(botao => {
+    botao.onclick = () => {
+        const numero = Number(botao.dataset.page);
+        salvarDados();
+        carregarPagina(numero);
+        pagesMenu.classList.add("hidden");
+    };
+});
 
 headerNote.addEventListener("input", () => {
-
-    localStorage.setItem(
-        "headerNote",
-        headerNote.value
-    );
-
     if (headerNote.value.trim() === "") {
         headerNote.classList.remove("filled");
     } else {
         headerNote.classList.add("filled");
     }
+    salvarDados();
 });
-
-const presetBtn =
-    document.getElementById("preset-btn");
-
-const presetMenu =
-    document.getElementById("preset-menu");
-
-presetBtn.onclick = () => {
-
-    presetMenu.classList.toggle("hidden");
-
-};
-
-document.querySelectorAll(".preset-option")
-.forEach(botao => {
-
-    botao.onclick = () => {
-
-        const id = botao.dataset.preset;
-
-        users.length = 0;
-
-        presets[id].users.forEach(user => {
-
-            users.push(
-                structuredClone(user)
-            );
-
-        });
-
-        headerNote.value =
-            presets[id].observacao;
-
-        headerNote.classList.add("filled");
-
-        localStorage.setItem(
-            "headerNote",
-            presets[id].observacao
-        );
-
-        salvarDados();
-
-        renderUsers();
-
-        presetMenu.classList.add("hidden");
-    };
-
-});
-
-
